@@ -3,6 +3,8 @@
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^22.9.0",
     "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "env-var": "^7.5.0",
     "fastify": "^5.1.0",
     "fastify-jwt": "^4.2.0",
     "fastify-redis": "^4.4.0",
