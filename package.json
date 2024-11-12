@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^22.9.0",
+    "bcrypt": "^5.1.1",
+    "fastify": "^5.1.0",
+    "fastify-jwt": "^4.2.0",
+    "fastify-redis": "^4.4.0",
+    "typescript": "^5.6.3"
+  },
+  "name": "note-gpd-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
