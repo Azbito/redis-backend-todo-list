@@ -8,7 +8,7 @@ const start = async () => {
   const port = Number(envConfig.PORT) || 3000;
 
   try {
-    app.listen({ port: 3000, host: "0.0.0.0" }, (err, address) => {
+    app.listen({ port, host: "0.0.0.0" }, (err, address) => {
       if (err) {
         process.exit(1);
       }
