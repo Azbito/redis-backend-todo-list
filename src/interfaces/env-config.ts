@@ -1,4 +1,4 @@
-import type { NodeEnvsEnum, StagesEnum } from "../constants";
+import type { NodeEnvsEnum, StagesEnum } from "@/constants";
 
 export type EnvConfig = {
   NODE_ENV: NodeEnvsEnum;

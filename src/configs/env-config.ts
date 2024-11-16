@@ -1,8 +1,8 @@
 import { get } from "env-var";
 import "dotenv/config";
 
-import { NodeEnvsEnum, StagesEnum } from "../constants";
-import type { EnvConfig } from "env-config";
+import { NodeEnvsEnum, StagesEnum } from "@/constants";
+import type { EnvConfig } from "@/interfaces/env-config";
 
 export const envConfig: EnvConfig = {
   NODE_ENV: get("NODE_ENV").required().asEnum(Object.values(NodeEnvsEnum)),

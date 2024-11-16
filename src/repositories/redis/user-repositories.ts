@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
-import { userSaveSchema, userSchema } from "schemas/user-schemas";
-import { verifyPassword } from "@utils/password-encrypt";
-import type { User } from "models/user";
+import { userSaveSchema, userSchema } from "@/schemas/user-schemas.js";
+import { verifyPassword } from "@/@utils/password-encrypt.js";
+import type { User } from "@/models/user.js";
 
 export class UserRepository {
   constructor(private readonly fastify: FastifyInstance) {}

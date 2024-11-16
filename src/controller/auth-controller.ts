@@ -1,5 +1,6 @@
-import { userSaveSchema, userSchema } from "schemas/user-schemas";
-import type { AuthService } from "services/auth-services";
+import type { User } from "@/models/user";
+import { userSaveSchema, userSchema } from "@/schemas/user-schemas";
+import type { AuthService } from "@/services/auth-service";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { v4 as uuidv4 } from "uuid";
 
@@ -15,16 +16,19 @@ export class AuthController {
 
     const user = parseResult.data;
 
+    if (!user.username) {
+      return reply.status(400).send({ message: "'username' é obrigatório!" });
+    }
+
     user.uuid = uuidv4();
 
     try {
-      await this.authService.register(user);
+      await this.authService.register(user as User);
       reply.send({ message: "Usuário registrado com sucesso!" });
     } catch (error: any) {
       reply.status(500).send({ message: error.message });
     }
   }
-
   async login(request: FastifyRequest, reply: FastifyReply) {
     const parseResult = userSchema.safeParse(request.body);
     if (!parseResult.success) {

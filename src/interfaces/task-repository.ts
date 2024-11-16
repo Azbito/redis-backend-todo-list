@@ -1,4 +1,4 @@
-import type { Task } from "../models/task";
+import type { Task } from "@/models/task";
 
 export interface TaskRepository {
   create(task: Task, authorId: string): Promise<Task>;

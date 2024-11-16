@@ -1,15 +1,15 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { v4 as uuidv4 } from "uuid";
-import type { Task } from "models/task";
-import { taskSchema } from "schemas/task-schemas";
-import type { TaskRepository } from "task-repository";
+import type { Task } from "@/models/task";
+import { taskSchema } from "@/schemas/task-schemas";
+import { TaskService } from "@/services/task-service";
 
 interface Params {
   uuid: string;
 }
 
 export class TaskController {
-  constructor(private readonly taskService: TaskRepository) {}
+  constructor(private readonly taskService: TaskService) {}
 
   async create(request: FastifyRequest, reply: FastifyReply) {
     const parseResult = taskSchema.safeParse(request.body);
@@ -103,6 +103,7 @@ export class TaskController {
 
       const updatedTask = { ...existingTask, ...taskData };
       await this.taskService.update(uuid, updatedTask, authorId);
+      reply.send(updatedTask);
     } catch (error: any) {
       reply.status(500).send({ message: error.message });
     }

@@ -1,11 +1,8 @@
-import fp from "fastify-plugin";
 import { FastifyInstance } from "fastify";
 import fastifyRedis from "@fastify/redis";
-import { envConfig } from "configs/env-config";
+import { envConfig } from "@/configs/env-config";
 
-const redisPlugin = fp(async (fastify: FastifyInstance) => {
-  console.log("Iniciando registro do plugin Redis...");
-
+async function registerRedisPlugin(fastify: FastifyInstance) {
   try {
     await fastify.register(fastifyRedis, {
       url: envConfig.REDIS_URL,
@@ -13,7 +10,6 @@ const redisPlugin = fp(async (fastify: FastifyInstance) => {
         rejectUnauthorized: false,
       },
     });
-    console.log("Plugin Redis registrado com sucesso.");
   } catch (err) {
     console.error("Erro ao registrar o plugin Redis:", err);
     return;
@@ -57,6 +53,10 @@ const redisPlugin = fp(async (fastify: FastifyInstance) => {
       console.error("Erro ao fechar conexão com Redis:", err);
     }
   });
-});
+}
+
+const redisPlugin = async (fastify: FastifyInstance) => {
+  await registerRedisPlugin(fastify);
+};
 
 export default redisPlugin;

@@ -1,4 +1,4 @@
-import type { UserRepository } from "user-repository";
+import type { UserRepository } from "@/repositories/redis/user-repositories";
 import { FastifyRequest, FastifyReply } from "fastify";
 
 export class UserController {

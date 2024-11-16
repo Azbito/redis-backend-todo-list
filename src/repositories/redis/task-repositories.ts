@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import type { Task } from "models/task";
+import type { Task } from "@/models/task.js";
 
 export class TaskRepository {
   constructor(private readonly fastify: FastifyInstance) {}

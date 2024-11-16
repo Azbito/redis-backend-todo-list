@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { envConfig } from "./configs/env-config";
+import { envConfig } from "@/configs/env-config";
 import { app } from "./app";
 
 dotenv.config();
@@ -9,6 +9,7 @@ const start = async () => {
 
   try {
     await app.listen({ port });
+    console.log(`Server running on port ${port}`);
     app.log.info(`Server running on port ${port}`);
   } catch (err) {
     app.log.error(err);

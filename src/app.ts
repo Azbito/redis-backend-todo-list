@@ -1,8 +1,8 @@
 import fastify from "fastify";
 import fastifyJwt from "@fastify/jwt";
-import { envConfig } from "./configs/env-config";
-import redisPlugin from "./plugins/redis-plugin";
-import { appRoutes } from "./routes";
+import { envConfig } from "@/configs/env-config";
+import redisPlugin from "@/plugins/redis-plugin";
+import { appRoutes } from "@/routes";
 import { ZodError } from "zod";
 
 export const app = fastify();

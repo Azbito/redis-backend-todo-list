@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
-import { UserRepository } from "repositories/user-repositories";
-import { hashPassword, verifyPassword } from "@utils/password-encrypt";
-import type { User } from "models/user";
+import { UserRepository } from "@/repositories/redis/user-repositories.js";
+import { hashPassword, verifyPassword } from "@/@utils/password-encrypt.js";
+import type { User } from "@/models/user.js";
 
 export class AuthService {
   constructor(

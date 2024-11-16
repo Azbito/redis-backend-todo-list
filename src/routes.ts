@@ -1,11 +1,12 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { UserController } from "./controller/user-controller";
-import { TaskController } from "./controller/task-controller";
-import { AuthController } from "./controller/auth-controller";
-import { jwtVerify } from "./@utils/jwt-verify";
-import { UserRepository } from "./repositories/user-repositories";
-import { TaskRepository } from "./repositories/task-repositories";
-import { AuthService } from "./services/auth-services";
+import { UserController } from "@/controller/user-controller";
+import { TaskController } from "@/controller/task-controller";
+import { AuthController } from "@/controller/auth-controller";
+import { jwtVerify } from "@/@utils/jwt-verify";
+import { UserRepository } from "@/repositories/redis/user-repositories";
+import { TaskRepository } from "@/repositories/redis/task-repositories";
+import { AuthService } from "@/services/auth-service";
+import { TaskService } from "@/services/task-service";
 
 export const appRoutes = async (app: FastifyInstance) => {
   const userRepository = new UserRepository(app);
@@ -14,7 +15,8 @@ export const appRoutes = async (app: FastifyInstance) => {
   app.get("/users/:id", userController.getUserById.bind(userController));
 
   const taskRepository = new TaskRepository(app);
-  const taskController = new TaskController(taskRepository);
+  const taskService = new TaskService(taskRepository);
+  const taskController = new TaskController(taskService);
 
   app.post(
     "/tasks",
