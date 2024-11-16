@@ -1,7 +1,7 @@
 import { get } from "env-var";
 import "dotenv/config";
 
-import { NodeEnvsEnum, StagesEnum } from "constants/env-constants";
+import { NodeEnvsEnum, StagesEnum } from "../constants";
 import type { EnvConfig } from "env-config";
 
 export const envConfig: EnvConfig = {

@@ -1,4 +1,4 @@
-import { NodeEnvsEnum, StagesEnum } from "../constants/env-constants";
+import { NodeEnvsEnum, StagesEnum } from "../constants";
 
 declare module "env-config" {
   export type EnvConfig = {
