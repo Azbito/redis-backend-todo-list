@@ -9,6 +9,12 @@ declare module "fastify" {
       sign(payload: object): string;
       verify<T>(token: string): T;
     };
-    jwtVerify: (options?: FastifyJwtVerifyOptions) => Promise<any>;
+    jwtVerify(): Promise<any>;
+  }
+
+  interface FastifyRequest {
+    user?: {
+      id: string;
+    };
   }
 }

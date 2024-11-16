@@ -1,12 +1,8 @@
-import type { UserRepository } from "@/repositories/user-repositories";
+import type { UserRepository } from "@/@types/user-repository";
 import { FastifyRequest, FastifyReply } from "fastify";
 
 export class UserController {
-  private userRepository: UserRepository;
-
-  constructor(userRepository: UserRepository) {
-    this.userRepository = userRepository;
-  }
+  constructor(private readonly userRepository: UserRepository) {}
 
   async getUserById(request: FastifyRequest, reply: FastifyReply) {
     const { id } = request.params as { id: string };

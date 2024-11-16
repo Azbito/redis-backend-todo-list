@@ -1,13 +1,16 @@
 import fp from "fastify-plugin";
-import Redis from "ioredis";
 import { FastifyInstance } from "fastify";
+import fastifyRedis from "@fastify/redis";
+import { envConfig } from "@/configs/env-config";
 
 const redisPlugin = fp(async (fastify: FastifyInstance) => {
-  const redis = new Redis();
-  fastify.decorate("redis", redis);
+  fastify.register(fastifyRedis, {
+    host: envConfig.IP,
+    port: 6379,
+  });
 
   fastify.addHook("onClose", async (fastifyInstance) => {
-    fastifyInstance.redis.disconnect();
+    await fastifyInstance.redis.quit();
   });
 });
 

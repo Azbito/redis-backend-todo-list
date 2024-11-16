@@ -1,17 +1,21 @@
-import { userSchema } from "@/schemas/user-schemas";
+import { userSaveSchema, userSchema } from "@/schemas/user-schemas";
 import type { AuthService } from "@/services/auth-services";
 import { FastifyReply, FastifyRequest } from "fastify";
+import { v4 as uuidv4 } from "uuid";
 
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
   async register(request: FastifyRequest, reply: FastifyReply) {
-    const parseResult = userSchema.safeParse(request.body);
+    const parseResult = userSaveSchema.safeParse(request.body);
+
     if (!parseResult.success) {
       return reply.status(400).send(parseResult.error.format());
     }
 
     const user = parseResult.data;
+
+    user.uuid = uuidv4();
 
     try {
       await this.authService.register(user);
