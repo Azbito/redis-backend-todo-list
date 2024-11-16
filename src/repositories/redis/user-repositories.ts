@@ -2,13 +2,19 @@ import { FastifyInstance } from "fastify";
 import { userSaveSchema, userSchema } from "@/schemas/user-schemas.js";
 import { verifyPassword } from "@/@utils/password-encrypt.js";
 import type { User } from "@/models/user.js";
+import { UserRepository as InterfaceUserRepository } from "@/interfaces/user-repository";
 
-export class UserRepository {
+export class UserRepository implements InterfaceUserRepository {
   constructor(private readonly fastify: FastifyInstance) {}
 
   async getUserByUsername(username: string): Promise<User | null> {
-    const userData = await this.fastify.redis.get(username);
-    return userData ? JSON.parse(userData) : null;
+    try {
+      const userData = await this.fastify.redis.get(username);
+      return userData ? JSON.parse(userData) : null;
+    } catch (e: any) {
+      console.log(e);
+      return null;
+    }
   }
 
   async findById(uuid: string): Promise<User | null> {

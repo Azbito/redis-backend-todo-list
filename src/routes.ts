@@ -11,7 +11,6 @@ import { TaskService } from "@/services/task-service";
 export const appRoutes = async (app: FastifyInstance) => {
   const userRepository = new UserRepository(app);
   const userController = new UserController(userRepository);
-
   app.get("/users/:id", userController.getUserById.bind(userController));
 
   const taskRepository = new TaskRepository(app);

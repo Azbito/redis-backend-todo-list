@@ -1,15 +1,17 @@
 import fastify from "fastify";
 import fastifyJwt from "@fastify/jwt";
 import { envConfig } from "@/configs/env-config";
-import redisPlugin from "@/plugins/redis-plugin";
 import { appRoutes } from "@/routes";
 import { ZodError } from "zod";
+import redis from "@fastify/redis";
 
 export const app = fastify();
 
-app.register(redisPlugin);
-app.register(fastifyJwt, { secret: envConfig.JWT_TOKEN });
+app.register(redis, {
+  url: envConfig.REDIS_URL,
+});
 
+app.register(fastifyJwt, { secret: envConfig.JWT_TOKEN });
 app.register(appRoutes);
 
 app.setErrorHandler((error, _request, reply) => {

@@ -2,7 +2,6 @@
   "dependencies": {
     "@fastify/jwt": "^9.0.1",
     "@types/bcrypt": "^5.0.2",
-    "@types/node": "^22.9.0",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "env-var": "^7.5.0",
@@ -32,7 +31,7 @@
   "description": "",
   "devDependencies": {
     "@fastify/redis": "^7.0.1",
-    "@types/ioredis": "^4.28.10",
+    "@types/node": "^22.9.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tsup": "^8.3.5",
