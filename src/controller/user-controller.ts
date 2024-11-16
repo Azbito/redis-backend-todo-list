@@ -1,4 +1,4 @@
-import type { UserRepository } from "@/@types/user-repository";
+import type { UserRepository } from "user-repository";
 import { FastifyRequest, FastifyReply } from "fastify";
 
 export class UserController {

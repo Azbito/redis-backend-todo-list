@@ -1,8 +1,8 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { v4 as uuidv4 } from "uuid";
-import type { Task } from "@/models/task";
-import type { TaskRepository } from "@/@types/task-repository";
-import { taskSchema } from "@/schemas/task-schemas";
+import type { Task } from "models/task";
+import { taskSchema } from "schemas/task-schemas";
+import type { TaskRepository } from "task-repository";
 
 interface Params {
   uuid: string;

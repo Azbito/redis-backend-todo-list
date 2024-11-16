@@ -8,9 +8,9 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["src/*"]
     },
-    "typeRoots": ["./node_modules/@types", "./src/@types/fastify-redis.d.ts"]
+    "typeRoots": ["./node_modules/@types", "./src/@types/"]
   },
   "include": ["src/**/*.ts", "src/@types/**/*.d.ts"],
   "exclude": ["node_modules"]

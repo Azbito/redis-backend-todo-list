@@ -1,7 +1,7 @@
 import fp from "fastify-plugin";
 import { FastifyInstance } from "fastify";
 import fastifyRedis from "@fastify/redis";
-import { envConfig } from "@/configs/env-config";
+import { envConfig } from "configs/env-config";
 
 const redisPlugin = fp(async (fastify: FastifyInstance) => {
   console.log("Iniciando registro do plugin Redis...");

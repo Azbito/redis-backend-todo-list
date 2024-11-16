@@ -1,5 +1,5 @@
-import { userSaveSchema, userSchema } from "@/schemas/user-schemas";
-import type { AuthService } from "@/services/auth-services";
+import { userSaveSchema, userSchema } from "schemas/user-schemas";
+import type { AuthService } from "services/auth-services";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { v4 as uuidv4 } from "uuid";
 
