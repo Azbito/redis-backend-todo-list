@@ -8,7 +8,12 @@ const start = async () => {
   const port = Number(envConfig.PORT) || 3000;
 
   try {
-    await app.listen({ port });
+    app.listen({ port: 3000, host: "0.0.0.0" }, (err, address) => {
+      if (err) {
+        process.exit(1);
+      }
+      console.log(`Server is running on ${address}`);
+    });
     console.log(`Server running on port ${port}`);
     app.log.info(`Server running on port ${port}`);
   } catch (err) {
