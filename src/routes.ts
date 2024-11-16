@@ -21,7 +21,11 @@ export const appRoutes = async (app: FastifyInstance) => {
     { onRequest: [jwtVerify] },
     taskController.create.bind(taskController)
   );
-  app.get("/tasks", taskController.list.bind(taskController));
+  app.get(
+    "/tasks",
+    { onRequest: [jwtVerify] },
+    taskController.list.bind(taskController)
+  );
   app.get("/tasks/:uuid", taskController.get.bind(taskController));
 
   app.put(

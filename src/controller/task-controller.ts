@@ -42,8 +42,17 @@ export class TaskController {
 
   async list(request: FastifyRequest, reply: FastifyReply) {
     try {
+      const authorId = this.getAuthorId(request);
+
+      if (!authorId) {
+        return reply.status(401).send({ message: "Unauthorized" });
+      }
+
       const tasks: Task[] = await this.taskService.list();
-      reply.send(tasks);
+
+      const filteredTasks = tasks.filter((task) => task.authorId === authorId);
+
+      reply.send(filteredTasks);
     } catch (error: any) {
       reply.status(500).send({ message: error.message });
     }
