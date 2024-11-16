@@ -5,7 +5,6 @@ export type EnvConfig = {
   STAGE: StagesEnum;
   JWT_TOKEN: string;
   PORT: number;
-  API_KEY: string;
   HOST: string;
-  IP: string;
+  REDIS_URL: string;
 };

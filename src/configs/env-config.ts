@@ -9,7 +9,6 @@ export const envConfig: EnvConfig = {
   STAGE: get("STAGE").required().asEnum(Object.values(StagesEnum)),
   JWT_TOKEN: get("JWT_TOKEN").required().asString(),
   PORT: get("PORT").required().asInt(),
-  API_KEY: get("API_KEY").required().asString(),
   HOST: get("HOST").required().asString(),
-  IP: get("IP").required().asString(),
+  REDIS_URL: get("REDIS_URL").required().asString(),
 };
