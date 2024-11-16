@@ -7,7 +7,7 @@ dotenv.config();
 const start = async () => {
   try {
     await app.listen({ port: Number(envConfig.PORT) });
-    app.log.info(`Servidor rodando em ${envConfig.HOST}:${envConfig.PORT}`);
+    app.log.info(`Server running on port ${envConfig.PORT}`);
   } catch (err) {
     app.log.error(err);
     process.exit(1);
